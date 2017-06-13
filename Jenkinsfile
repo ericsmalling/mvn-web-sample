@@ -1,5 +1,10 @@
 pipeline {
-   agent { docker "maven:3.5.0-jdk-8"}
+   agent {
+      docker {
+         image "maven:3.5.0-jdk-8"
+         args '--link repo'
+      }
+   }
    stages{
       stage ('Build') {
          steps {
