@@ -2,7 +2,6 @@ pipeline {
    agent {
       docker {
          image "maven:3.5.0-jdk-8"
-         args '--link repo --net jenkinscompose_default'
       }
    }
    stages{
