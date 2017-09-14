@@ -1,13 +1,12 @@
-#Sample Java WebApp Dockerfile - unoptimized
+#Sample Java WebApp Dockerfile - partially optimized
 
 #our base image
 FROM ubuntu:16.04
 
-#Update apt catalogs
-RUN apt-get update -y
-
-#Install JDK
-RUN apt-get install -y openjdk-8-jre-headless curl
+#Update apt catalogs and install JDK
+RUN apt-get update -y && \
+    apt-get install -y openjdk-8-jre-headless curl && \
+    rm -rf /var/lib/apt/lists/*
 
 #Install Tomcat
 RUN curl http://mirror.olnevhost.net/pub/apache/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz -O
