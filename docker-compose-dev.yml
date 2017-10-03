@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  webapp:
+    image: ericsmalling/app:5
+    environment:
+      - ZZZ_ENV=DEVdoc
+
+  frontend:
+    image: haproxy:1.7-alpine
+    depends_on:
+      - webapp
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+
+
+
+
